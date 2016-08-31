@@ -1,11 +1,14 @@
+/*Rodrigo Mayett Guzman
+se definen los constructores del nodo 
+y sus atributos*/
 #include <iostream>
 
 class Nodo
 {
-private:
+private://atributos
 	int Dato;
 	Nodo* Sig;
-public:
+public://constructores
 	Nodo(int Dato, Nodo* Sig);
 	Nodo(int Dato);
 	void setDato(int Dato);

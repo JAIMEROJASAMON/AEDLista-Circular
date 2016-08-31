@@ -1,29 +1,29 @@
+/*Rodrigo Mayett Guzman
+define los metodos de la lista
+ que ya se habian definido en Lista.h*/
 #include "Lista.h"
-
+//crea una lista vacia
 Lista::Lista()
 {
 	this->H=NULL;
 	this->T=NULL;
 }
-
+//crea una lista con un dato
 Lista::Lista(int Dato)
 {
 	Nodo * aux= new Nodo(Dato);
 	this->H=aux;
 	this->T=aux;
-	/*std::cout<<H->getDato()<<std::endl;
-	std::cout<<H->getSig()<<std::endl;
-	std::cout<<T->getDato()<<std::endl;
-	std::cout<<T->getSig()<<std::endl;*/
 }
-
+//verifica si la lista esta vacia 
 bool Lista::ListaVacia()
 {
 	if (this->H == NULL && this->T == NULL)
 		return true;
 	return false;
 }
-
+//agrega un elemento al inicio de la lista
+//y cambia la referencia de H
 void Lista::AddInicio(int Dato)
 {
 	Nodo* aux = new Nodo(Dato,this->H);
@@ -32,11 +32,9 @@ void Lista::AddInicio(int Dato)
 		this->T= aux;
 	}
 	this->H= aux;
-/*	std::cout<<H->getDato()<<std::endl;
-	std::cout<<H->getSig()<<std::endl;
-	std::cout<<T->getDato()<<std::endl;
-	std::cout<<T->getSig()<<std::endl;*/
 }
+//agrega un elemento al final de la lista 
+//y cambia la referencia de T
 void Lista::AddFinal(int Dato){
 	Nodo * aux = new Nodo(Dato);
 	if (!ListaVacia())
@@ -50,6 +48,7 @@ void Lista::AddFinal(int Dato){
 		this->T=aux;
 	}		
 }
+//Agrega un dato en la lista despues de la referencia
 void Lista::AddRef(int Dato, int Ref){
 	if (ListaVacia())
 	{
@@ -73,6 +72,8 @@ void Lista::AddRef(int Dato, int Ref){
 		std::cout<<"No existe la referenci aen la lista"<<std::endl;
 	}
 }
+//remueve el primer elemento de la lista 
+//y cambia la referencia de H
 int Lista::RemoveInicio(){
 	if (!ListaVacia())
 	{
@@ -89,6 +90,8 @@ int Lista::RemoveInicio(){
 		std::cout<<"La lista esta vacia"<<std::endl;		
 	}	
 }
+//remueve el ultimo nodo de la lista y 
+//cambia la referencia de T
 int Lista::RemoveFinal(){
 	if (ListaVacia())
 	{
@@ -110,6 +113,7 @@ int Lista::RemoveFinal(){
 	}
 	return Dato;
 }
+//busca un dato  en la lista 
 Nodo * Lista::BuscarElemento(int Dato){
 	if (ListaVacia())
 	{
@@ -119,6 +123,11 @@ Nodo * Lista::BuscarElemento(int Dato){
 	Nodo * aux = this->H;
 	while(aux->getDato()!=Dato&&aux!=T){
 		aux=aux->getSig();
+	}	
+	if (aux->getDato()!=Dato)
+	{//en caso de no encontrar el dato regresa null e indica que no lo encontro
+		std::cout<<"No se encuentra el elemento"<<std::endl;
+		return NULL;
 	}
 	if (aux->getDato()==Dato)
 	{
@@ -126,6 +135,7 @@ Nodo * Lista::BuscarElemento(int Dato){
 	}
 	return aux;
 }
+//remueve un dato basado en la referencia dada 
 Nodo * Lista::RemoveRef(int Ref){
 	if (ListaVacia())
 	{
@@ -151,11 +161,13 @@ Nodo * Lista::RemoveRef(int Ref){
 		std::cout<<"No existe la referencia en la lista"<<std::endl;
 	}
 }
+//vacia la lista completa
 int Lista::VaciarLista(){	
 	this->H=NULL;
 	this->T=NULL;
 	std::cout<<"Lista Vaciada"<<std::endl;	
 }
+//muestra los elementos de la lista
 void Lista::Show()
 {
 	Nodo* aux = this->H;
