@@ -1,1 +1,0 @@
-/home/rmayett/Documentos/GitHub/Lista Circular/AEDLista-Circular/build/CMakeFiles/lista.dir
